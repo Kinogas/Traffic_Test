@@ -26,6 +26,13 @@
 # Visual Studio cache directory
 .vs/
 
+# Rider cache directory
+/projectSettingsUpdater.xml
+/modules.xml
+/contentModel.xml
+**/.idea/**
+/.idea.MerinChatGame.dir
+
 # Gradle cache directory
 .gradle/
 
