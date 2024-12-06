@@ -1,26 +1,26 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class RoadGenerator : MonoBehaviour
 {
-    [SerializeField] GameObject car;  //Ô‚ğƒAƒ^ƒbƒ`
-    [SerializeField] float roadNormalLength;  // ‰½‚à‚È‚¢“¹˜H‚Ì’·‚³
-    [SerializeField] float roadWithCrosswalkLength;  // ‰¡’f•à“¹‚Ì‚ ‚é“¹˜H‚Ì’·‚³
+    [SerializeField] GameObject car;  //è»Šã‚’ã‚¢ã‚¿ãƒƒãƒ
+    [SerializeField] float roadNormalLength;  // ä½•ã‚‚ãªã„é“è·¯ã®é•·ã•
+    [SerializeField] float roadWithCrosswalkLength;  // æ¨ªæ–­æ­©é“ã®ã‚ã‚‹é“è·¯ã®é•·ã•
 
-    [SerializeField] int genetatingTrafficLightinterval; // M†‹@‚ª‘½‚­‚Ä‚à‰½“¹˜H‚É1‰ñ¶¬‚³‚ê‚é‚©
+    [SerializeField] int genetatingTrafficLightinterval; // ä¿¡å·æ©ŸãŒå¤šãã¦ã‚‚ä½•é“è·¯ã«1å›ç”Ÿæˆã•ã‚Œã‚‹ã‹
     int _generatingCount = 0;
 
-    // ‰½‚à‚È‚¢“¹˜H‚ğ¶¬‚·‚éŠm—¦‚Í ( 100 - persentOfGeneratingCrosswalk ) [%]
-    [SerializeField] int persentOfGeneratingCrosswalk; // ‰¡’f•à“¹‚Ì‚ ‚é“¹˜H‚ğ¶¬‚·‚éƒp[ƒZƒ“ƒg(Å‘å100)
+    // ä½•ã‚‚ãªã„é“è·¯ã‚’ç”Ÿæˆã™ã‚‹ç¢ºç‡ã¯ ( 100 - persentOfGeneratingCrosswalk ) [%]
+    [SerializeField] int persentOfGeneratingCrosswalk; // æ¨ªæ–­æ­©é“ã®ã‚ã‚‹é“è·¯ã‚’ç”Ÿæˆã™ã‚‹ãƒ‘ãƒ¼ã‚»ãƒ³ãƒˆ(æœ€å¤§100)
 
-    // M†‹@‚ªÂ‚ÌŠm—¦‚Í ( 100 - PersentOfRedTrafficLight ) [%]
-    [SerializeField] int PersentOfRedTrafficLight; // M†‹@‚ªÔM†‚Ìƒp[ƒZƒ“ƒg(Å‘å100)
+    // ä¿¡å·æ©ŸãŒé’ã®ç¢ºç‡ã¯ ( 100 - PersentOfRedTrafficLight ) [%]
+    [SerializeField] int PersentOfRedTrafficLight; // ä¿¡å·æ©ŸãŒèµ¤ä¿¡å·ã®ãƒ‘ãƒ¼ã‚»ãƒ³ãƒˆ(æœ€å¤§100)
 
     [SerializeField] GameObject roadNormal;
     [SerializeField] GameObject roadStopArea;
     [SerializeField] GameObject roadZebra;
 
-    float _roadGeneratingPosition;  // Ô‚ÌˆÊ’u‚ª‚±‚±‚ğ’´‚¦‚½‚çV‚µ‚¢“¹˜H‚ğì‚é
-    float _allRoadLength; // ¡‚ ‚é“¹˜H‚Ì’·‚³‚Ì‡Œv
+    float _roadGeneratingPosition;  // è»Šã®ä½ç½®ãŒã“ã“ã‚’è¶…ãˆãŸã‚‰æ–°ã—ã„é“è·¯ã‚’ä½œã‚‹
+    float _allRoadLength; // ä»Šã‚ã‚‹é“è·¯ã®é•·ã•ã®åˆè¨ˆ
     
     void Start()
     {
@@ -32,21 +32,21 @@ public class RoadGenerator : MonoBehaviour
     {
         if (car.transform.position.z > _roadGeneratingPosition)
         {
-            int randomNumForCrossWalk = Random.Range(0, 100); // ‰¡’f•à“¹‚Ì‚ ‚é“¹˜H‚ğ¶¬‚·‚é‚©‚Ç‚¤‚©‚Ì‚½‚ß‚Ì—”
+            int randomNumForCrossWalk = Random.Range(0, 100); // æ¨ªæ–­æ­©é“ã®ã‚ã‚‹é“è·¯ã‚’ç”Ÿæˆã™ã‚‹ã‹ã©ã†ã‹ã®ãŸã‚ã®ä¹±æ•°
             if (randomNumForCrossWalk < persentOfGeneratingCrosswalk && _generatingCount == 0)
             {
-                // Ÿ‚É“¹˜H‚ğ¶¬‚·‚éêŠ‚ğV‚µ‚­İ’è‚·‚é
+                // æ¬¡ã«é“è·¯ã‚’ç”Ÿæˆã™ã‚‹å ´æ‰€ã‚’æ–°ã—ãè¨­å®šã™ã‚‹
                 _roadGeneratingPosition += roadWithCrosswalkLength;
 
-                int randomNumForTrafficLight = Random.Range(0, 100); // M†‚ğÔ‚É‚·‚é‚©‚Ç‚¤‚©‚Ì‚½‚ß‚Ì—”
+                int randomNumForTrafficLight = Random.Range(0, 100); // ä¿¡å·ã‚’èµ¤ã«ã™ã‚‹ã‹ã©ã†ã‹ã®ãŸã‚ã®ä¹±æ•°
                 if (randomNumForTrafficLight < PersentOfRedTrafficLight)
                 {
-                    // ¡‚ ‚é“¹˜H‚Ìæ‚ÉÔM†•t‚«“¹˜H‚ğ¶¬‚·‚é
+                    // ä»Šã‚ã‚‹é“è·¯ã®å…ˆã«èµ¤ä¿¡å·ä»˜ãé“è·¯ã‚’ç”Ÿæˆã™ã‚‹
                     Instantiate(roadStopArea, new Vector3(0, 0, _allRoadLength), Quaternion.Euler(0, 180, 0));
                 }
                 else
                 {
-                    // ¡‚ ‚é“¹˜H‚Ìæ‚ÉÂM†•t‚«“¹˜H‚ğ¶¬‚·‚é
+                    // ä»Šã‚ã‚‹é“è·¯ã®å…ˆã«é’ä¿¡å·ä»˜ãé“è·¯ã‚’ç”Ÿæˆã™ã‚‹
                     Instantiate(roadZebra, new Vector3(0, 0, _allRoadLength), Quaternion.Euler(0, 180, 0));
                 }
 
@@ -55,10 +55,10 @@ public class RoadGenerator : MonoBehaviour
             }
             else
             {
-                // Ÿ‚É“¹˜H‚ğ¶¬‚·‚éêŠ‚ğV‚µ‚­İ’è‚·‚é
+                // æ¬¡ã«é“è·¯ã‚’ç”Ÿæˆã™ã‚‹å ´æ‰€ã‚’æ–°ã—ãè¨­å®šã™ã‚‹
                 _roadGeneratingPosition += roadNormalLength;
 
-                // ¡‚ ‚é“¹˜H‚Ìæ‚É‰½‚à‚È‚¢“¹˜H‚ğ¶¬‚·‚é
+                // ä»Šã‚ã‚‹é“è·¯ã®å…ˆã«ä½•ã‚‚ãªã„é“è·¯ã‚’ç”Ÿæˆã™ã‚‹
                 Instantiate(roadNormal, new Vector3(0, 0, _allRoadLength),Quaternion.Euler(0, 180, 0));
 
                 _allRoadLength += roadNormalLength;

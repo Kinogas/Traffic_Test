@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class RoadDestroyer : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class RoadDestroyer : MonoBehaviour
 
     void Update()
     {
-        // “¹˜H‚ª\•ª‚ÉŽÔ‚ÌŒã‚ë‚É‚È‚Á‚½‚ç“¹˜H‚ðÁ‚·
+        // é“è·¯ãŒååˆ†ã«è»Šã®å¾Œã‚ã«ãªã£ãŸã‚‰é“è·¯ã‚’æ¶ˆã™
         if (car.transform.position.z - this.transform.position.z > roadLength )
         {
             Destroy(this.gameObject);
