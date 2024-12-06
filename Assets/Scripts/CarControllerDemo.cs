@@ -1,15 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class CarControllerDemo : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f; // “®‚­‘¬‚³iZ²•ûŒüj
+    [SerializeField] private float speed = 5f; // å‹•ãé€Ÿã•ï¼ˆZè»¸æ–¹å‘ï¼‰
 
     void Update()
     {
-        // ƒXƒy[ƒXƒL[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚éŠÔ
+        // ã‚¹ãƒšãƒ¼ã‚¹ã‚­ãƒ¼ãŒæŠ¼ã•ã‚Œã¦ã„ã‚‹é–“
         if (Input.GetKey(KeyCode.Space))
         {
-            // Z²³•ûŒü‚ÉˆÚ“®
+            // Zè»¸æ­£æ–¹å‘ã«ç§»å‹•
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
     }
