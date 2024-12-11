@@ -17,7 +17,7 @@ public class CarPositionCheck: MonoBehaviour
     // call it if the car stops
     public float CheckCarPos()
     {
-        _relativePos = stopLine.transform.position.x - car.transform.position.x - _carHeadLength;
+        _relativePos = stopLine.transform.position.z - car.transform.position.z - _carHeadLength;
         return _relativePos;
     }
 }
