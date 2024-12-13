@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class LevelSystem : MonoBehaviour
 {
-    private float [,]speedLevel = new float[4,3]{{0,0,0},{1,50,1000},{2,60,5000},{3,80,10000}};//{ゲーム内のレベル,車の最大速度,レベルアップに必要なスコア}
+    private float [,]speedLevel = new float[4,3]{{0,0,0},{1,50,1000},{2,60,5000},{3,80,10000}};
+    //{ゲーム内のレベル,車の最大速度,レベルアップに必要なスコア}(数値は仮)
     public float maxSpeed;
     public int currentLevel;
     void Start()
