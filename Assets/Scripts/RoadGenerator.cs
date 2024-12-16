@@ -30,6 +30,16 @@ public class RoadGenerator : MonoBehaviour
 
     void Update()
     {
+
+        /*LevelSystem levelSystem;
+        GameObject obj = GameObject.Find("LevelSystem");
+        levelSystem = obj.GetComponent<LevelSystem>();
+
+        for(int i =0; i < levelSystem.speedLevel.GetLength(0); i++)
+        {
+
+        }*/
+
         if (car.transform.position.z > _roadGeneratingPosition)
         {
             int randomNumForCrossWalk = Random.Range(0, 100); // 横断歩道のある道路を生成するかどうかのための乱数
