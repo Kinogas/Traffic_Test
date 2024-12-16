@@ -408,9 +408,9 @@ MonoBehaviour:
   genetatingTrafficLightinterval: 3
   persentOfGeneratingCrosswalk: 50
   PersentOfRedTrafficLight: 50
-  roadNormal: {fileID: 4373732534357174670, guid: c051dd0e86fd9ad4a9667949f0e7ce57, type: 3}
-  roadStopArea: {fileID: 7089894885385440973, guid: 346efc8fd22b02241aeb029040c10f9d, type: 3}
-  roadZebra: {fileID: 6238235996975383846, guid: afb02dc15628f7342a09568e7536da06, type: 3}
+  roadNormal: {fileID: 5695641057672417670, guid: c11182b6e132f8c429fe27caee8cbfec, type: 3}
+  roadStopArea: {fileID: 1450688926470905296, guid: bc2c673e3007aa041806e78cce1c6025, type: 3}
+  roadZebra: {fileID: 7545453600174719288, guid: de48608f2118ea445b82970196dcfbe8, type: 3}
 --- !u!4 &1022631904
 Transform:
   m_ObjectHideFlags: 0
