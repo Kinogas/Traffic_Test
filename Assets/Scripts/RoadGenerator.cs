@@ -73,7 +73,7 @@ public class RoadGenerator : MonoBehaviour
                 _roadGeneratingPosition += roadNormalLength;
 
                 // 今ある道路の先に何もない道路を生成する
-                Instantiate(roadNormal, new Vector3(0, 0, _allRoadLength),Quaternion.Euler(0, 180, 0));
+                Instantiate(roadNormal, new Vector3(0, 0, _allRoadLength),Quaternion.Euler(0, 0, 0));
 
                 _allRoadLength += roadNormalLength;
 
