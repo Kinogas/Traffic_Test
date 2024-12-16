@@ -21,7 +21,7 @@ public class RoadGenerator : MonoBehaviour
 
     float _roadGeneratingPosition;  // 車の位置がここを超えたら新しい道路を作る
     float _allRoadLength; // 今ある道路の長さの合計
-    
+
     void Start()
     {
         _roadGeneratingPosition = 0;
@@ -31,14 +31,18 @@ public class RoadGenerator : MonoBehaviour
     void Update()
     {
 
-        /*LevelSystem levelSystem;
+        LevelSystem levelSystem;
         GameObject obj = GameObject.Find("LevelSystem");
         levelSystem = obj.GetComponent<LevelSystem>();
 
         for(int i =0; i < levelSystem.speedLevel.GetLength(0); i++)
         {
-
-        }*/
+            if(levelSystem.currentLevel == i)
+            {
+                persentOfGeneratingCrosswalk = (int)levelSystem.speedLevel[i,3];
+                PersentOfRedTrafficLight = (int)levelSystem.speedLevel[i,4];
+            }
+        }
 
         if (car.transform.position.z > _roadGeneratingPosition)
         {
