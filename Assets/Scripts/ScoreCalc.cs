@@ -37,7 +37,7 @@ public class ScoreCalc : MonoBehaviour
             GetCurrentScore();
         
         var deltaCarPos = _car.transform.position.z - _prevPos.z;
-        var velocity = deltaCarPos / Time.deltaTime;
+        var velocity = _car.GetComponent<Rigidbody>().linearVelocity.magnitude;
         
         _score += deltaCarPos;
         _prevPos = _car.transform.position;
@@ -51,12 +51,26 @@ public class ScoreCalc : MonoBehaviour
             _stopLine = GameObject.Find("StopAreaRoad_StopLine");
             if (_stopLine == null)
             {
-                Debug.Log("Stop line not found");
+                Debug.Log("Stop line is not found");
                 return;
             }
             _isStop = true;
             var carRelativePos = _stopLine.GetComponent<CarPositionCheck>().CheckCarPos();
             Debug.Log("carRelativePos: "+carRelativePos);
+            if (carRelativePos < 0)
+            {
+                Debug.Log("You passed the stop line!");
+                _score = 0;
+                // Game over
+                return;
+            }
+            else if (carRelativePos > _baseScore)
+            {
+                Debug.Log("You stopped too away from the stop line!");
+                _score = 0;
+                // Game over
+                return;
+            }
             _score += _baseScore + _weight * carRelativePos * carRelativePos;
         }
     }
