@@ -35,7 +35,7 @@ public class RoadGenerator : MonoBehaviour
         GameObject obj = GameObject.Find("LevelSystem");
         levelSystem = obj.GetComponent<LevelSystem>();
 
-        for(int i =0; i < levelSystem.speedLevel.GetLength(0); i++)
+        for(int i =0; i < levelSystem.speedLevel.GetLength(0); i++)//レベルに応じて信号の確率を変更
         {
             if(levelSystem.currentLevel == i)
             {
