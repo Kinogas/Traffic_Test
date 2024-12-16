@@ -14,7 +14,7 @@ public class CarController : MonoBehaviour
         Rigidbody rb = this.GetComponent<Rigidbody> ();  // rigidbodyを取得
         Vector3 force = new Vector3 (0.0f,0.0f,speed);    // 力を設定
 
-        if(Input.GetKey(KeyCode.Space))
+        if(Input.GetKey(KeyCode.Space))//スペース押したら減速する
         {
             if(rb.linearVelocity.z > 0)
             {
