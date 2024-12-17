@@ -11,6 +11,15 @@ public class ScoreCalc : MonoBehaviour
     private bool _isStop;
     private float _currentTime = 0.0f;
     private float _prevTime = 0.0f;
+
+    private bool _isGameover = false;
+
+    // This is Property
+    public bool IsGameover
+    {
+        get { return _isGameover; }
+        set { _isGameover = value; }
+    }
     
     void Start()
     {
