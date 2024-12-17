@@ -2006,6 +2006,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 979e336eeb545de408c0e699a148ffa3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 600113086726714261}
+    - targetCorrespondingSourceObject: {fileID: -8908735366641695210, guid: 979e336eeb545de408c0e699a148ffa3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7189258341763515697}
   m_SourcePrefab: {fileID: 100100000, guid: 979e336eeb545de408c0e699a148ffa3, type: 3}
 --- !u!1 &1450688926470905296 stripped
 GameObject:
@@ -2025,6 +2028,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadLength: 60
+--- !u!1 &2070908538249930391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8908735366641695210, guid: 979e336eeb545de408c0e699a148ffa3, type: 3}
+  m_PrefabInstance: {fileID: 1792582415490293889}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7189258341763515697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070908538249930391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e46a9298840fb4d81a804509f144bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  stopLine: {fileID: 0}
 --- !u!4 &2263675951895562090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 979e336eeb545de408c0e699a148ffa3, type: 3}
