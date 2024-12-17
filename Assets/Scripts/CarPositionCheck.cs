@@ -11,7 +11,7 @@ public class CarPositionCheck: MonoBehaviour
     {
         // this code should attach stop line prefab object
         stopLine = gameObject;
-        car = GameObject.FindWithTag("car"); // or directly attach in inspector of stop line
+        car = GameObject.FindWithTag("car");
     }
     
     // call it if the car stops
