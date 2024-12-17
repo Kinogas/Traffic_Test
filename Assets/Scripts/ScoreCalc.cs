@@ -1,4 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.WSA;
 
 public class ScoreCalc : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class ScoreCalc : MonoBehaviour
     private float _prevTime = 0.0f;
 
     private bool _isGameover = false;
+
+    // できればここはScoreCalcと別にしたい
+    [SerializeField] GameObject chickenText;
+    [SerializeField] GameObject gameoverText;
+    [SerializeField] GameObject retryButton;
+    [SerializeField] GameObject titleButton;
 
     // This is Property
     public bool IsGameover
@@ -70,14 +77,22 @@ public class ScoreCalc : MonoBehaviour
             {
                 Debug.Log("You passed the stop line!");
                 _score = 0;
-                // Game over
+                // ゲームオーバーのオブジェクトの出現
+                gameoverText.SetActive(true);
+                retryButton.SetActive(true);
+                titleButton.SetActive(true);
+                _isGameover = true;
                 return;
             }
             else if (carRelativePos > _baseScore)
             {
                 Debug.Log("You stopped too away from the stop line!");
                 _score = 0;
-                // Game over
+                // ゲームオーバーのオブジェクトの出現
+                chickenText.SetActive(true);
+                retryButton.SetActive(true);
+                titleButton.SetActive(true);
+                _isGameover = true;
                 return;
             }
             _score += _baseScore + _weight * carRelativePos * carRelativePos;
