@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class BuildingDestroyer : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] float destDis;
+
+    GameObject car;
+
     void Start()
     {
-        
+        car = GameObject.FindWithTag("car");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // “¹˜H‚ª\•ª‚ÉŽÔ‚ÌŒã‚ë‚É‚È‚Á‚½‚ç“¹˜H‚ðÁ‚·
+        if (car.transform.position.z - this.transform.position.z > destDis)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
