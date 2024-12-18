@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class LevelSystem : MonoBehaviour
 {
-    private float [,]speedLevel = new float[4,3]{{0,0,0},{1,50,1000},{2,60,5000},{3,80,10000}};
-    //{ゲーム内のレベル,車の最大速度,レベルアップに必要なスコア}(数値は仮)
-    public float maxSpeed;
-    public int currentLevel;
+    public float [,]speedLevel = new float[4,5]{{0,0,0,50,50},{1,50,1000,50,30},{2,70,5000,70,50},{3,100,10000,90,60}};
+    //{ゲーム内のレベル, 車の最大速度, レベルアップに必要なスコア, 信号が来る確率, 信号が来る時赤になる確率}(数値は仮)
+    [SerializeField]public float maxSpeed;
+    [SerializeField] public int currentLevel;
     void Start()
     {
 
@@ -16,23 +16,6 @@ public class LevelSystem : MonoBehaviour
         ScoreCalc scoreCalc;
         GameObject obj = GameObject.Find("ScoreCalculator");
         scoreCalc = obj.GetComponent<ScoreCalc>();
-
-        /*if(0 <= scoreCalc.GetCurrentScore() && scoreCalc.GetCurrentScore() < speedLevel[1,2])
-        {
-            currentLevel = (int)speedLevel[1,0];
-            maxSpeed = speedLevel[1,1];
-        }
-
-        if(speedLevel[1,2] <= scoreCalc.GetCurrentScore() && scoreCalc.GetCurrentScore() < speedLevel[2,2])
-        {
-            currentLevel = (int)speedLevel[2,0];
-        }
-
-        if(5000 <= scoreCalc.GetCurrentScore() && scoreCalc.GetCurrentScore() < 10000)
-        {
-            currentLevel = 3;
-        }*/
-
 
         for(int i =0; i < speedLevel.GetLength(0); i++)//スコアに応じてレベルと速度を代入
         {
@@ -46,6 +29,5 @@ public class LevelSystem : MonoBehaviour
                 Debug.Log("レベル" + currentLevel);
                 Debug.Log("マックススピード" + maxSpeed);
                 Debug.Log("スコア" + scoreCalc.GetCurrentScore());
-                //Debug.Log();
     }
 }

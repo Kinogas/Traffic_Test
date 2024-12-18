@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ScoreCalc : MonoBehaviour
 {
@@ -11,6 +11,21 @@ public class ScoreCalc : MonoBehaviour
     private bool _isStop;
     private float _currentTime = 0.0f;
     private float _prevTime = 0.0f;
+
+    private bool _isGameover = false;
+
+    // できればここはScoreCalcと別にしたい
+    [SerializeField] GameObject chickenText;
+    [SerializeField] GameObject gameoverText;
+    [SerializeField] GameObject retryButton;
+    [SerializeField] GameObject titleButton;
+
+    // This is Property
+    public bool IsGameover
+    {
+        get { return _isGameover; }
+        set { _isGameover = value; }
+    }
     
     void Start()
     {
@@ -37,7 +52,7 @@ public class ScoreCalc : MonoBehaviour
             GetCurrentScore();
         
         var deltaCarPos = _car.transform.position.z - _prevPos.z;
-        var velocity = deltaCarPos / Time.deltaTime;
+        var velocity = _car.GetComponent<Rigidbody>().linearVelocity.magnitude;
         
         _score += deltaCarPos;
         _prevPos = _car.transform.position;
@@ -51,12 +66,34 @@ public class ScoreCalc : MonoBehaviour
             _stopLine = GameObject.Find("StopAreaRoad_StopLine");
             if (_stopLine == null)
             {
-                Debug.Log("Stop line not found");
+                Debug.Log("Stop line is not found");
                 return;
             }
             _isStop = true;
             var carRelativePos = _stopLine.GetComponent<CarPositionCheck>().CheckCarPos();
             Debug.Log("carRelativePos: "+carRelativePos);
+            if (carRelativePos < 0)
+            {
+                Debug.Log("You passed the stop line!");
+                _score = 0;
+                // ゲームオーバーのオブジェクトの出現
+                gameoverText.SetActive(true);
+                retryButton.SetActive(true);
+                titleButton.SetActive(true);
+                _isGameover = true;
+                return;
+            }
+            else if (carRelativePos > _baseScore)
+            {
+                Debug.Log("You stopped too away from the stop line!");
+                _score = 0;
+                // ゲームオーバーのオブジェクトの出現
+                chickenText.SetActive(true);
+                retryButton.SetActive(true);
+                titleButton.SetActive(true);
+                _isGameover = true;
+                return;
+            }
             _score += _baseScore + _weight * carRelativePos * carRelativePos;
         }
     }
