@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEditor;
+using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
     private float speed = 2f; // 動く速さ（Z軸方向）
+    private bool IsBrake = false;//ブレーキボタンが押されたかどうか
 
     [SerializeField] private ScoreCalc scoreCalc;  // scoreCalcからゲームオーバーかどうかを教えてもらう
 
@@ -18,7 +21,12 @@ public class CarController : MonoBehaviour
         if (!scoreCalc.IsGameover)  // scoreCalcの_isGameoverがfalse、つまりゲームオーバーでなければ車を動かす
         {
 
-            if (Input.GetKey(KeyCode.Space))//スペース押したら減速する
+            if (Input.GetKeyDown(KeyCode.Space))//スペース押したら減速する
+            {
+                IsBrake = true;
+            }
+
+            if(IsBrake == true)
             {
                 if (rb.linearVelocity.z > 0)
                 {
@@ -27,6 +35,7 @@ public class CarController : MonoBehaviour
                 else
                 {
                     rb.linearVelocity = Vector3.zero;
+                    StartCoroutine(ReStartCountDown());
                 }
             }
             else if (rb.linearVelocity.magnitude < levelSystem.maxSpeed)//車を最大速度まで加速する
@@ -41,5 +50,11 @@ public class CarController : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
         }
 
+    }
+
+    IEnumerator ReStartCountDown()
+    {
+        yield return new WaitForSeconds(3);
+        IsBrake = false;
     }
 }
