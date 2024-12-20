@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CarController : MonoBehaviour
 {
     private float speed = 10f; // 動く速さ（Z軸方向）
     private bool IsBrake = false;//ブレーキボタンが押されたかどうか
-
-    [SerializeField] private ScoreCalc scoreCalc;  // scoreCalcからゲームオーバーかどうかを教えてもらう
+    [SerializeField] private GameOverManager gameOverManager;  // GameOverManagerからゲームオーバーかどうかを教えてもらう
 
     void Update()
     {
@@ -18,7 +18,7 @@ public class CarController : MonoBehaviour
         Rigidbody rb = this.GetComponent<Rigidbody> ();  // rigidbodyを取得
         Vector3 force = new Vector3 (0.0f,0.0f,speed);    // 力を設定
 
-        if (!scoreCalc.IsGameover)  // scoreCalcの_isGameoverがfalse、つまりゲームオーバーでなければ車を動かす
+        if (!gameOverManager.isGameOver)  // scoreCalcの_isGameoverがfalse、つまりゲームオーバーでなければ車を動かす
         {
 
             if (Input.GetKeyDown(KeyCode.Space))//スペース押したら減速する

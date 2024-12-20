@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CarPositionCheck: MonoBehaviour
 {
+    public bool isPrevStopLine;
     [SerializeField] private GameObject car;
     [SerializeField] private GameObject stopLine;
     private float _relativePos;
@@ -12,6 +13,7 @@ public class CarPositionCheck: MonoBehaviour
         // this code should attach stop line prefab object
         stopLine = gameObject;
         car = GameObject.FindWithTag("car");
+        isPrevStopLine = false;
     }
     
     // call it if the car stops

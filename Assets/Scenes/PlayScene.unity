@@ -475,10 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a83d0baa1c3cf41a98bb7d8cb2af08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chickenText: {fileID: 1435718338}
-  gameoverText: {fileID: 2036086102}
-  retryButton: {fileID: 1219491499}
-  titleButton: {fileID: 1497279412}
+  gameOverManager: {fileID: 1322021704}
 --- !u!4 &240089516
 Transform:
   m_ObjectHideFlags: 0
@@ -1330,6 +1327,56 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c11182b6e132f8c429fe27caee8cbfec, type: 3}
+--- !u!1 &1322021703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1322021705}
+  - component: {fileID: 1322021704}
+  m_Layer: 0
+  m_Name: GameOverManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1322021704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322021703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2775a1aaff25cbd4696374b5758fbd96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGameOver: 0
+  isChicken: 0
+  chickenText: {fileID: 1435718338}
+  gameOverText: {fileID: 2036086102}
+  retryButton: {fileID: 1219491499}
+  titleButton: {fileID: 1497279412}
+--- !u!4 &1322021705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322021703}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.9619904, y: 8.253132, z: 902.0174}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1354888732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,7 +1754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93fa8bb07ac8154b849ab06c0640c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreCalc: {fileID: 240089515}
+  gameOverManager: {fileID: 1322021704}
 --- !u!1 &1992571320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,3 +1959,4 @@ SceneRoots:
   - {fileID: 483006823}
   - {fileID: 939351940}
   - {fileID: 165547757}
+  - {fileID: 1322021705}
