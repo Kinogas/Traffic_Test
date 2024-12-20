@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameOverManager : MonoBehaviour
 {
-    public static bool IsGameOver = false;
-    public static bool IsChicken = false;
+    public bool isGameOver = false;
+    public bool isChicken = false;
 
     [SerializeField] GameObject chickenText;
     [SerializeField] GameObject gameOverText;
@@ -22,7 +23,7 @@ public class GameOverManager : MonoBehaviour
     
     void Update()
     {
-        if (IsGameOver)
+        if (isGameOver)
         {
             ShowGameOverObject();
         }
@@ -30,11 +31,22 @@ public class GameOverManager : MonoBehaviour
 
     void ShowGameOverObject()
     {
-        if(IsChicken)
+        if(isChicken)
             chickenText.SetActive(true);
         else
             gameOverText.SetActive(true);
         retryButton.SetActive(true);
         titleButton.SetActive(true);
+    }
+
+    public void TooChicken()
+    {
+        isChicken = true;
+        isGameOver = true;
+    }
+
+    public void BreakRule()
+    {
+        isGameOver = true;
     }
 }
