@@ -54,7 +54,7 @@ public class CarController : MonoBehaviour
 
     IEnumerator ReStartCountDown()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         IsBrake = false;
     }
 }
