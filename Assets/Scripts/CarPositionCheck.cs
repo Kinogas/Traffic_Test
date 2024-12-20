@@ -13,6 +13,14 @@ public class CarPositionCheck: MonoBehaviour
         stopLine = gameObject;
         car = GameObject.FindWithTag("car");
     }
+
+    void Update()
+    {
+        if (CheckCarPos() < 0)
+        {
+            GameOverManager.IsGameOver = true;
+        }
+    }
     
     // call it if the car stops
     public float CheckCarPos()
