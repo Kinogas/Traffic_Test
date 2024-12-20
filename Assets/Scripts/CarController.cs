@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class CarController : MonoBehaviour
 {
-    private float speed = 2f; // 動く速さ（Z軸方向）
+    private float speed = 10f; // 動く速さ（Z軸方向）
     private bool IsBrake = false;//ブレーキボタンが押されたかどうか
     //[SerializeField] private GameOverManager gameOverManager;  // GameOverManagerからゲームオーバーかどうかを教えてもらう
 
@@ -30,7 +30,7 @@ public class CarController : MonoBehaviour
             {
                 if (rb.linearVelocity.z > 0)
                 {
-                    rb.AddForce(-force * 3);
+                    rb.AddForce(-force * 4);
                 }
                 else
                 {
@@ -54,7 +54,7 @@ public class CarController : MonoBehaviour
 
     IEnumerator ReStartCountDown()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         IsBrake = false;
     }
 }
