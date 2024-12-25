@@ -1,14 +1,23 @@
 ﻿using System.Collections;
 using UnityEditor;
+using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.Serialization;
+using TMPro;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
     private float speed = 10f; // 動く速さ（Z軸方向）
-    private bool isBreak = false;//ブレーキボタンが押されたかどうか
+    private bool IsBrake = false;//ブレーキボタンが押されたかどうか
+    public float currentSpeed;
     [SerializeField] private GameOverManager gameOverManager;  // GameOverManagerからゲームオーバーかどうかを教えてもらう
 
+    public GameObject highScore_object = null;
+    public GameObject score_object_2 = null;
+
+    public int highScore;
+    public int myScore;
     public bool IsBreak()
     {
         return isBreak;
@@ -20,8 +29,14 @@ public class CarController : MonoBehaviour
         GameObject obj = GameObject.Find("LevelSystem");
         levelSystem = obj.GetComponent<LevelSystem>();
 
+        ScoreCalc scoreCalc;
+        GameObject score = GameObject.Find("ScoreCalculator");
+        scoreCalc = score.GetComponent<ScoreCalc>();
+
         Rigidbody rb = this.GetComponent<Rigidbody> ();  // rigidbodyを取得
         Vector3 force = new Vector3 (0.0f,0.0f,speed);    // 力を設定
+
+        currentSpeed = rb.linearVelocity.magnitude;
 
         if (!gameOverManager.isGameOver)  // scoreCalcの_isGameoverがfalse、つまりゲームオーバーでなければ車を動かす
         {
@@ -53,6 +68,25 @@ public class CarController : MonoBehaviour
         else
         {
             rb.linearVelocity = Vector3.zero;
+        }
+
+        if (gameOverManager.isGameOver)
+        {
+            myScore = (int)scoreCalc.GetCurrentScore();
+            highScore = PlayerPrefs.GetInt("SCORE", 0);
+            if (highScore < myScore)  //ハイスコアを超えた場合に更新
+            {
+            highScore = myScore;
+
+        　　　//"SCORE"をキーとして、ハイスコアを保存
+            PlayerPrefs.SetInt("SCORE", highScore);
+            PlayerPrefs.Save();//ディスクへの書き込み
+            }
+            Text highScore_text = highScore_object.GetComponent<Text>();
+            highScore_text.text = "ハイスコア：" + highScore;
+            Text score_text_2 = score_object_2.GetComponent<Text>();
+            score_text_2.text = " ス コ ア ：" + (int)scoreCalc.GetCurrentScore();
+            //Debug.Log("ハイスコア" + highScore);
         }
 
     }
