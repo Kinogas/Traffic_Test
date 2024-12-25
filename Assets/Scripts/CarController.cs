@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class CarController : MonoBehaviour
 {
     private float speed = 10f; // 動く速さ（Z軸方向）
-    private bool IsBrake = false;//ブレーキボタンが押されたかどうか
+    private bool isBreak = false;//ブレーキボタンが押されたかどうか
     public float currentSpeed;
     [SerializeField] private GameOverManager gameOverManager;  // GameOverManagerからゲームオーバーかどうかを教えてもらう
 
@@ -18,6 +18,11 @@ public class CarController : MonoBehaviour
 
     public int highScore;
     public int myScore;
+    public bool IsBreak()
+    {
+        return isBreak;
+    }
+
     public bool IsBreak()
     {
         return isBreak;
