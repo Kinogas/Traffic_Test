@@ -8,7 +8,7 @@ public class ScoreCalc : MonoBehaviour
     private GameObject _stopLine;
     private float _score;
     private float _weight;
-    private readonly float _baseScore = 400;
+    private readonly float _baseScore = 1500;
     private Vector3 _prevPos;
     private float _deltaCarPos;
     private bool _isStop;
@@ -22,7 +22,7 @@ public class ScoreCalc : MonoBehaviour
         _prevPos = _car.transform.position;
         _isStop = true;
         _existPrevStopLine = false;
-        _weight = - _baseScore / 400;
+        _weight = _baseScore / 20;
     }
 
     // call it if you need score
@@ -91,7 +91,7 @@ public class ScoreCalc : MonoBehaviour
                 gameOverManager.TooChicken();
                 return;
             }
-            _score += _baseScore + _weight * carRelativePos * carRelativePos;
+            _score += Mathf.Pow(carRelativePos - 20, 2) * _baseScore/400;
         }
         
     }

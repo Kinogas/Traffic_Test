@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class CarController : MonoBehaviour
 {
     private float speed = 10f; // 動く速さ（Z軸方向）
-    private bool isBreak = false;//ブレーキボタンが押されたかどうか
+    private bool isBrake = false;//ブレーキボタンが押されたかどうか
     public float currentSpeed;
     [SerializeField] private GameOverManager gameOverManager;  // GameOverManagerからゲームオーバーかどうかを教えてもらう
 
@@ -18,10 +18,9 @@ public class CarController : MonoBehaviour
 
     public int highScore;
     public int myScore;
-
-    public bool IsBreak()
+    public bool IsBrake()
     {
-        return isBreak;
+        return isBrake;
     }
 
     void Update()
@@ -44,14 +43,14 @@ public class CarController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))//スペース押したら減速する
             {
-                isBreak = true;
+                isBrake = true;
             }
 
-            if(isBreak == true)
+            if(isBrake == true)
             {
                 if (rb.linearVelocity.z > 0)
                 {
-                    rb.AddForce(-force * 4);
+                    rb.AddForce(-force * 5);
                 }
                 else
                 {
@@ -95,6 +94,6 @@ public class CarController : MonoBehaviour
     IEnumerator ReStartCountDown()
     {
         yield return new WaitForSeconds(2);
-        isBreak = false;
+        isBrake = false;
     }
 }

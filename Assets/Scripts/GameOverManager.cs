@@ -10,6 +10,8 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] GameObject gameOverText;
     [SerializeField] GameObject retryButton;
     [SerializeField] GameObject titleButton;
+    [SerializeField] GameObject scoreBackground;
+    [SerializeField] GameObject canvas;
     
     
     void Start()
@@ -18,6 +20,8 @@ public class GameOverManager : MonoBehaviour
         gameOverText.SetActive(false);
         retryButton.SetActive(false);
         titleButton.SetActive(false);
+        scoreBackground.SetActive(false);
+        canvas.SetActive(true);
     }
 
     
@@ -37,6 +41,8 @@ public class GameOverManager : MonoBehaviour
             gameOverText.SetActive(true);
         retryButton.SetActive(true);
         titleButton.SetActive(true);
+        canvas.SetActive(false);
+        scoreBackground.SetActive(true);
     }
 
     public void TooChicken()

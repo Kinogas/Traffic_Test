@@ -18,7 +18,7 @@ public class TrafficLightManager : MonoBehaviour
     }
     void Update()
     {
-        isBreak = carController.IsBreak();
+        isBreak = carController.IsBrake();
 
         if (isBreak && !isStoped)
             isStoped = true;
