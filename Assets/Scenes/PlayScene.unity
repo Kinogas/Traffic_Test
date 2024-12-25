@@ -441,6 +441,9 @@ MonoBehaviour:
   - {fileID: 1802174921894648239, guid: fb5ebcd118ca40b44964a4065db1a127, type: 3}
   - {fileID: 146077175543240047, guid: f1483895b2840cc409b873f13c56949d, type: 3}
   - {fileID: 3208505178073816374, guid: 083abcc6e154f51489a2377f5156dc4d, type: 3}
+  - {fileID: 2226490093224835595, guid: d213251810a309340826e36e4d61f1ca, type: 3}
+  - {fileID: 2952145951059230611, guid: 233539acf59752b47a667adf2891a3cf, type: 3}
+  - {fileID: 7502742276061866396, guid: 76b6473be84cb2f4193f2f8b6186da49, type: 3}
   buildingWidth: 9
   buildingDist: 6
   leftGeneratingPos: -25

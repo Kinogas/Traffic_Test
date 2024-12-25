@@ -16,25 +16,36 @@ public class BuildingGenerator : MonoBehaviour
     void Start()
     {
         _zGeneratingPos = 0;
-        _allBuildingLength = 6 * (buildingWidth + buildingDist);
+        _allBuildingLength = 0;
+        
+        Instantiate_buildings();
+
+        _zGeneratingPos = 0;
+
+        Instantiate_buildings();
     }
 
     void Update()
     {
         if (car.transform.position.z > _zGeneratingPos)
         {
-            for (int i = 0; i < buildingSetLength; i++)
-            {
-                int randomNumForLeftBuilding = Random.Range(0, buildings.Length);
-                int randomNumForRightBuilding = Random.Range(0, buildings.Length);
-
-                Instantiate(buildings[randomNumForLeftBuilding], new Vector3(leftGeneratingPos, -2, _allBuildingLength + i * (buildingWidth + buildingDist)), Quaternion.Euler(0, -90, 0));
-                Instantiate(buildings[randomNumForRightBuilding], new Vector3(rightGeneratingPos, -2, _allBuildingLength + i * (buildingWidth + buildingDist)), Quaternion.Euler(0, 90, 0));
-            }
-
-            _allBuildingLength += buildingSetLength * (buildingWidth + buildingDist);
-            _zGeneratingPos += buildingSetLength * (buildingWidth + buildingDist);
+            Instantiate_buildings();
         }
 
+    }
+
+    void Instantiate_buildings()
+    {
+        for (int i = 0; i < buildingSetLength; i++)
+        {
+            int randomNumForLeftBuilding = Random.Range(0, buildings.Length);
+            int randomNumForRightBuilding = Random.Range(0, buildings.Length);
+
+            Instantiate(buildings[randomNumForLeftBuilding], new Vector3(leftGeneratingPos, -2, _allBuildingLength + i * (buildingWidth + buildingDist)), Quaternion.Euler(0, -90, 0));
+            Instantiate(buildings[randomNumForRightBuilding], new Vector3(rightGeneratingPos, -2, _allBuildingLength + i * (buildingWidth + buildingDist)), Quaternion.Euler(0, 90, 0));
+        }
+
+        _allBuildingLength += buildingSetLength * (buildingWidth + buildingDist);
+        _zGeneratingPos += buildingSetLength * (buildingWidth + buildingDist);
     }
 }
